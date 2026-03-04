@@ -25,6 +25,11 @@ class SellerService:
         result = await self.session.execute(select(Seller))
         return result.scalars().all()
 
+    async def get_by_email_and_password(self, e_mail: str, password: str) -> Seller | None:
+        query = select(Seller).where(Seller.e_mail == e_mail, Seller.password == password)
+        result = await self.session.execute(query)
+        return result.scalar_one_or_none()
+
     async def get_single_seller(self, seller_id: int) -> Seller | None:
         query = select(Seller).options(selectinload(Seller.books)).where(Seller.id == seller_id)
         result = await self.session.execute(query)

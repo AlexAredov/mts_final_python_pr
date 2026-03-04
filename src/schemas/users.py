@@ -8,6 +8,8 @@ __all__ = [
     "ReturnedSeller",
     "ReturnedAllSellers",
     "ReturnedSellerWithBooks",
+    "TokenRequest",
+    "TokenResponse",
 ]
 
 
@@ -35,3 +37,13 @@ class ReturnedAllSellers(BaseModel):
 
 class ReturnedSellerWithBooks(ReturnedSeller):
     books: list[ReturnedBook]
+
+
+class TokenRequest(BaseModel):
+    e_mail: str
+    password: str
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"

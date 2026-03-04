@@ -17,6 +17,17 @@ Content-Type: application/json
 
 ###
 
+# Получаем JWT токен по e_mail + password
+POST http://127.0.0.1:8000/api/v1/token/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "e_mail": "ivanov@example.com",
+    "password": "qwerty123"
+}
+
+###
+
 # Получаем список продавцов
 GET http://127.0.0.1:8000/api/v1/seller/ HTTP/1.1
 
